@@ -1,7 +1,9 @@
-<h1>Ihsan Blog</h1>
-<%@blog_posts.each do |blog_post|%>
-  <div>
-    <h2><%= link_to blog_post.title, blog_post %></h2>
-    <%=blog_post.body%>
-  </div>
-<% end %>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <% @blog_posts.each do |blog_post| %>
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-bold"><%= link_to blog_post.title, blog_post %></h2>
+      <p><%= truncate(blog_post.body, length: 100) %></p>
+      <%= link_to 'Read more', blog_post, class: 'text-blue-500' %>
+    </div>
+  <% end %>
+</div>
