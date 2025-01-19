@@ -1,3 +1,22 @@
-<%= link_to 'Edit', edit_blog_post_path(@blog_post) if user_signed_in? %>
-<h1><%= @blog_post.title %></h1>
-<%= @blog_post.body %>
+<div class="max-w-3xl mx-auto mt-8 px-4 sm:px-6 lg:px-8">
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <div class="flex justify-between items-start mb-4">
+      <h1 class="text-4xl font-extrabold text-gray-900">
+        <%= @blog_post.title %>
+      </h1>
+      <%# If the user is signed in, show the 'Edit' button %>
+      <%= link_to 'Edit', edit_blog_post_path(@blog_post), class: 'text-blue-500 hover:text-blue-700 font-medium' if user_signed_in? %>
+    </div>
+    <div class="text-sm text-gray-500 mb-6">
+      <span>Posted on <%= @blog_post.created_at.strftime("%B %d, %Y") %></span>
+    </div>
+    <div class="space-y-4">
+      <p class="text-lg text-gray-800 leading-relaxed">
+        <%= @blog_post.body %>
+      </p>
+    </div>
+    <div class="mt-6 text-gray-500">
+      <%= link_to 'Back to Blog', blog_posts_path, class: 'text-blue-500 hover:text-blue-700 font-medium' %>
+    </div>
+  </div>
+</div>
